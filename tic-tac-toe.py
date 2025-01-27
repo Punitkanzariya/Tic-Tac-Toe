@@ -1,211 +1,60 @@
-import signal
 from tkinter import *
 import tkinter.messagebox as msg
-root= Tk()
-root.title('TIC-TAC-TOE---DataFlair')
-digits = [1,2,3,4,5,6,7,8,9]
-mark = ''
+
+# Initialize the root window
+root = Tk()
+root.title("TIC-TAC-TOE")
+
+# Initialize game variables
+digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+panels = [""] * 10
 count = 0
-panels = ["panel"]*10
-def win(panels,sign):
-return ((panels[1] == panels[2] == panels [3] == sign)
-or (panels[1] == panels[4] == panels [7] == sign)
-or (panels[1] == panels[5] == panels [9] == sign)
-or (panels[2] == panels[5] == panels [8] == sign)
-or (panels[3] == panels[6] == panels [9] == sign)
-or (panels[3] == panels[5] == panels [7] == sign)
-Python(4330701) GOVERNMENT POLYTECHNIC, AHMEDABAD
-or (panels[4] == panels[5] == panels [6] == sign)
-or (panels[7] == panels[8] == panels [9] == sign))
+
+# Function to check if a player has won
+def win(panels, sign):
+    return (
+        (panels[1] == panels[2] == panels[3] == sign) or
+        (panels[4] == panels[5] == panels[6] == sign) or
+        (panels[7] == panels[8] == panels[9] == sign) or
+        (panels[1] == panels[4] == panels[7] == sign) or
+        (panels[2] == panels[5] == panels[8] == sign) or
+        (panels[3] == panels[6] == panels[9] == sign) or
+        (panels[1] == panels[5] == panels[9] == sign) or
+        (panels[3] == panels[5] == panels[7] == sign)
+    )
+
+# Function to handle button clicks
 def checker(digit):
-global count, mark, digits
-if digit==1 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button1.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==2 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button2.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==3 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-Python(4330701) GOVERNMENT POLYTECHNIC, AHMEDABAD
-button3.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==4 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button4.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==5 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button5.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==6 and digit in digits:
-digits.remove(digit)
-Python(4330701) GOVERNMENT POLYTECHNIC, AHMEDABAD
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button6.config(text = mark)
-count = count+1
-sign
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==7 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button7.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==8 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button8.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-Python(4330701) GOVERNMENT POLYTECHNIC, AHMEDABAD
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if digit==9 and digit in digits:
-digits.remove(digit)
-if count%2==0:
-mark ='X'
-panels[digit]=mark
-elif count%2!=0:
-mark = 'O'
-panels[digit]=mark
-button9.config(text = mark)
-count = count+1
-sign = mark
-if(win(panels,sign) and sign=='X'):
-msg.showinfo("Result","Player1 wins")
-root.destroy()
-elif(win(panels,sign) and sign=='O'):
-msg.showinfo("Result","Player2 wins")
-root.destroy()
-if(count>8 and win(panels,'X')==False and win(panels,'O')==False):
-msg.showinfo("Result","Match Tied")
-root.destroy()
-Label(root,text="player1 : X",font="times 15").grid(row=0,column=1)
-Label(root,text="player2 : O",font="times 15").grid(row=0,column=2)
-button1=Button(root,width=15,font=('Times 16
-bold'),height=7,command=lambda:checker(1))
-button1.grid(row=1,column=1)
-button2=Button(root,width=15,height=7,font=('Times 16
-bold'),command=lambda:checker(2))
-button2.grid(row=1,column=2)
-button3=Button(root,width=15,height=7,font=('Times 16 bold'),command=lambda:
-checker(3))
-button3.grid(row=1,column=3)
-button4=Button(root,width=15,height=7,font=('Times 16 bold'),command=lambda:
-checker(4))
-button4.grid(row=2,column=1)
-button5=Button(root,width=15,height=7,font=('Times 16 bold'),command=lambda:
-checker(5))
-button5.grid(row=2,column=2)
-button6=Button(root,width=15,height=7,font=('Times 16 bold'),command=lambda:
-checker(6))
-button6.grid(row=2,column=3)
-Python(4330701) GOVERNMENT POLYTECHNIC, AHMEDABAD
-button7=Button(root,width=15,height=7,font=('Times 16 bold'),command=lambda:
-checker(7))
-button7.grid(row=3,column=1)
-button8=Button(root,width=15,height=7,font=('Times 16 bold'),command=lambda:
-checker(8))
-button8.grid(row=3,column=2)
-button9=Button(root,width=15,height=7,font=('Times 16 bold'),command=lambda:
-checker(9))
-button9.grid(row=3,column=3)
+    global count, digits, panels
+
+    if digit in digits:
+        digits.remove(digit)
+        mark = "X" if count % 2 == 0 else "O"
+        panels[digit] = mark
+        buttons[digit].config(text=mark, state=DISABLED)
+
+        # Check for win or draw
+        if win(panels, mark):
+            msg.showinfo("Result", f"Player {'1' if mark == 'X' else '2'} wins!")
+            root.destroy()
+        elif count == 8:  # Last move
+            msg.showinfo("Result", "It's a Tie!")
+            root.destroy()
+        else:
+            count += 1
+
+# Create the UI for the game
+Label(root, text="Player 1: X", font="times 15").grid(row=0, column=1)
+Label(root, text="Player 2: O", font="times 15").grid(row=0, column=2)
+
+# Create buttons and arrange them in a 3x3 grid
+buttons = [None] * 10  # To store button references
+for i in range(1, 10):
+    buttons[i] = Button(
+        root, text="", width=15, height=7, font=("Times", 16, "bold"),
+        command=lambda digit=i: checker(digit)
+    )
+    buttons[i].grid(row=(i - 1) // 3 + 1, column=(i - 1) % 3 + 1)
+
+# Run the Tkinter event loop
 root.mainloop()
