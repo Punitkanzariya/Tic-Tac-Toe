@@ -4,6 +4,7 @@ import tkinter.messagebox as msg
 # Initialize the root window
 root = Tk()
 root.title("TIC-TAC-TOE")
+root.configure(bg="#2C3E50")  # Set background color
 
 # Initialize game variables
 digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -31,8 +32,12 @@ def checker(digit):
         digits.remove(digit)
         mark = "X" if count % 2 == 0 else "O"
         panels[digit] = mark
-        buttons[digit].config(text=mark, state=DISABLED)
-
+        
+        buttons[digit].config(
+            text=mark, state=DISABLED, font=("Times", 30, "bold"),
+            disabledforeground="#EC7063" if mark == "X" else "#5DADE2"
+        )
+        
         # Check for win or draw
         if win(panels, mark):
             msg.showinfo("Result", f"Player {'1' if mark == 'X' else '2'} wins!")
@@ -44,17 +49,19 @@ def checker(digit):
             count += 1
 
 # Create the UI for the game
-Label(root, text="Player 1: X", font="times 15").grid(row=0, column=1)
-Label(root, text="Player 2: O", font="times 15").grid(row=0, column=2)
+Label(root, text="Player 1: X", font=("Times", 15), fg="white", bg="#2C3E50").grid(row=0, column=1)
+Label(root, text="Player 2: O", font=("Times", 15), fg="white", bg="#2C3E50").grid(row=0, column=2)
 
 # Create buttons and arrange them in a 3x3 grid
 buttons = [None] * 10  # To store button references
 for i in range(1, 10):
     buttons[i] = Button(
-        root, text="", width=15, height=7, font=("Times", 16, "bold"),
+        root, text="", width=6, height=3, font=("Times", 20, "bold"),
+        bg="#F8C471", fg="black", relief=RAISED, bd=5,
+        activebackground="#D5DBDB",
         command=lambda digit=i: checker(digit)
     )
-    buttons[i].grid(row=(i - 1) // 3 + 1, column=(i - 1) % 3 + 1)
+    buttons[i].grid(row=(i - 1) // 3 + 1, column=(i - 1) % 3 + 1, padx=5, pady=5)
 
 # Run the Tkinter event loop
 root.mainloop()
